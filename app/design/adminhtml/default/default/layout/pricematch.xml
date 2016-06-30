@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <adminhtml_pricematch_edit>
+    <update handle="editor"/>
+  </adminhtml_pricematch_edit>
+  <adminhtml_pricematch_index>
+    <update handle="editor"/>
+    <reference name="content">
+      <block type="pricematch/adminhtml_pricematch" name="pricematch"/>
+    </reference>
+  </adminhtml_pricematch_index>
+</layout>

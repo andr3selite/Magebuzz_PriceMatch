@@ -1,0 +1,214 @@
+<?php
+/**
+ * @copyright Copyright (c) 2015 www.magebuzz.com
+ * @var $this Magebuzz_Pricematch_Block_Popup
+ */
+?>
+
+<?php $symbolCurrentCurrency = $this->getCurrentCurrency() ?>
+<?php $_product    = $this->getCurrentProduct() ?>
+<?php $current_url = $this->helper('core/url')->getCurrentUrl() ?>
+<?php $data        = $this->getFormData() ?>
+<?php $header      = $this->getFormHeader() ?>
+<?php $text_before_form = $this->getTextBeforeForm() ?>
+<?php $text_after_form  = $this->getTextAfterForm() ?>
+<?php $enable_phone     = $this->isEnabled('phone') ?>
+<?php $enable_skype     = $this->isEnabled('skype') ?>
+<?php $enable_captcha   = $this->isEnabled('captcha') ?>
+<div id="pricematch" class="pricematch-popup">
+  <div class="messages-button">
+    <div id="pricematch-form-message">
+      <ul class="messages">
+        <ul>
+          <span><div class="price-match-message" id="price-match-message" style=" "></div></span>
+        </ul>
+      </ul>
+    </div>
+  </div>
+  <div class="pricematch-form-before">
+    <?php echo $text_before_form ?>
+  </div>
+  <div class="popup-pricematch-form">
+    <form id="pricematchForm" method="post" action="javascript:submitForm();">
+      <div class="fieldset">
+        <h2 class="legend-pricematch"><?php echo $header ?></h2>
+        <ul class="form-list">
+          <li class="fields">
+            <div class="field first">
+              <h4 class="label-input label-name"><?php echo $this->__('Your Name') ?><em>*</em></h4>
+
+              <div class="input-box">
+                <input id="customer_name" class="input-text required-entry" type="text"
+                       value="<?php if ($this->isCustomerLoggedIn()): ?><?php echo $this->getCurrentCustomer()->getName() ?><?php else: ?><?php if (isset($data['customer_name'])): ?><?php echo $data['customer_name'] ?><?php endif ?><?php endif ?>"
+                       title="<?php echo $this->__('Your Name') ?>" name="customer_name">
+              </div>
+            </div>
+            <div class="field last">
+              <h4 class="label-input label-email"><?php echo $this->__('Email') ?><em>*</em></h4>
+
+              <div class="input-box">
+                <input id="customer_email" class="input-text required-entry" type="email"
+                       value="<?php if ($this->isCustomerLoggedIn()): ?><?php echo $this->getCurrentCustomer()->getEmail() ?><?php else: ?><?php if (isset($data['customer_email'])): ?><?php echo $data['customer_email'] ?><?php endif ?><?php endif ?>"
+                       title="<?php echo $this->__('Email') ?>" name="customer_email">
+              </div>
+            </div>
+          </li>
+          <li class="fields">
+            <?php if ($enable_phone == 1): ?>
+              <div class="field first">
+                <h4 class="label-input label-phone"><?php echo $this->__('Your Phone') ?></h4>
+
+                <div class="input-box">
+                  <input id="customer_phonenumb" class="input-text" type="text"
+                         value="<?php if (isset($data['customer_phonenumb'])): ?><?php echo $data['customer_phonenumb'] ?><?php endif ?>"
+                         name="customer_phonenumb">
+                </div>
+              </div>
+            <?php endif ?>
+            <?php if ($enable_skype == 1): ?>
+              <div class="field last">
+                <h4 class="label-input label-skype"><?php echo $this->__('Your Skype') ?></h4>
+
+                <div class="input-box">
+                  <input id="customer_skype" class="input-text" type="text"
+                         value="<?php if (isset($data['customer_skype'])): ?><?php echo $data['customer_skype'] ?><?php endif ?>"
+                         name="customer_skype">
+                </div>
+              </div>
+            <?php endif ?>
+          </li>
+          <li class="fields">
+            <div class="field  first last">
+              <h4 class="label-input label-product"><?php echo $this->__('Product') ?><em>*</em></h4>
+
+              <div class="input-box">
+                <input id="product_name" class="input-text required-entry" type="text"
+                       title="<?php echo $this->__('Product') ?>" name="product_name"
+                       value="<?php echo $_product->getName() ?>" readonly>
+              </div>
+            </div>
+          </li>
+          <li class="fields">
+            <div class="field first">
+              <h4 class="label-input label-product-link"><?php echo $this->__('Competitor\'s product link') ?><em>*</em>
+              </h4>
+
+              <div class="input-box">
+                <input id="competitor_link" class="input-text required-entry" type="text"
+                       title="<?php echo $this->__('Competitor\'s product link') ?>" name="competitor_link"
+                       value="<?php if (isset($data['competitor_link'])): ?><?php echo $data['competitor_link'] ?><?php endif ?>">
+              </div>
+            </div>
+            <div class="field last">
+              <h4 class="label-input label-price"><?php echo $this->__('Competitor\'s price')." (".$symbolCurrentCurrency.")"; ?><em>*</em></h4>
+
+              <div class="input-box">
+                <input id="competitor_price" class="input-text required-entry" type="text"
+                       title="<?php echo $this->__('Competitor\'s price') ?>" name="competitor_price"
+                       value="<?php if (isset($data['competitor_price'])): ?><?php echo $data['competitor_price'] ?><?php endif ?>">
+              </div>
+            </div>
+          </li>
+          <li class="wide fields">
+            <div class="field first last">
+              <h4 class="label-input label-information"><?php echo $this->__('Information') ?></h4>
+
+              <div class="input-box">
+                <textarea id="information" class="input-text" rows="2" cols="3"
+                          title="<?php echo $this->__('Information') ?>"
+                          name="information" value="<?php if (isset($data['information'])): ?><?php echo $data['information'] ?><?php endif ?>"></textarea>
+              </div>
+            </div>
+          </li>
+          <li class="product_id">
+            <input name="product_id" type="hidden" value="<?php echo $_product->getId() ?>">
+          </li>
+          <li class="current-url">
+            <input name="current_url" type="hidden" value="<?php echo $current_url ?>">
+          </li>
+        </ul>
+      </div>
+      <div class="pricematch-captcha">
+        <?php if($enable_captcha == "1"): ?>
+          <?php echo $this->getChildHtml('captcha') ?>
+        <?php endif ?>
+      </div>
+      <div class="buttons-set">
+        <p class="required"><?php echo $this->__('* Required Fields'); ?></p>
+        <button class="btn-submit-pricematch" title="<?php echo $this->__('Submit') ?>" type="submit">
+          <span><span><?php echo $this->__('Submit') ?></span></span>
+        </button>
+        <button class="btn-reset-pricematch" onclick="resetFields();" title="<?php echo $this->__('Reset') ?>"
+                type="button">
+          <span><span><?php echo $this->__('Reset') ?></span></span>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="pricematch-form-after">
+    <?php echo $text_after_form ?>
+  </div>
+</div>
+<script type="text/javascript">
+  var pricematchForm = new VarienForm('pricematchForm', false);
+
+  function resetFields() {
+    Form.reset('pricematchForm');
+  }
+  function closePopup() {
+    parent.jQuery.fancybox.close();
+  }
+
+  document.onkeydown = function (e) {
+    if (e == null) { // ie
+      keycode = event.keyCode;
+    } else { // mozilla
+      keycode = e.which;
+    }
+    if (keycode == 27) {
+      closePopup();
+    }
+  };
+
+  function submitForm() {
+  var url = '<?php echo $this->getUrl('pricematch/index/post', array('_secure' => TRUE));?>';
+  var subscription_form = new VarienForm('pricematchForm', true);
+  var parameters = {
+    customer_name: jQuery('input[name=customer_name]').val(),
+    customer_email: escape(jQuery('input[name=customer_email]').val()),
+    customer_phonenumb: escape(jQuery('input[name=customer_phonenumb]').val()),
+    customer_skype: escape(jQuery('input[name=customer_skype]').val()),
+    product_name: escape(jQuery('input[name=product_name]').val()),
+    competitor_link: jQuery('input[name=competitor_link]').val(),
+    competitor_price: escape(jQuery('input[name=competitor_price]').val()),
+    current_url: escape(jQuery('input[name=current_url]').val()),
+    captcha_code: escape(jQuery('input[name=captcha_code]').val()),
+    information: jQuery('textarea[name=information]').val(),
+    product_id: <?php echo urlencode($_product->getId()); ?>
+  };
+
+  jQuery.fancybox.showLoading();
+  var request = new Ajax.Request(
+    url,
+    {
+      method: 'post',
+      onSuccess: function (transport) {
+        var data = transport.responseText.evalJSON();
+        if (data.error) {
+          jQuery.fancybox.hideLoading();
+          $('price-match-message').update(data.message);
+          refresh_image();
+        }
+        else {
+          jQuery.fancybox.hideLoading();
+          jQuery.fancybox('<b><p style="color:#3d6611">Your request has been submitted. Thank  you!</p></b>');
+          window.setTimeout(function () {
+            jQuery.fancybox.close();
+          }, 3000);
+        }
+      },
+      parameters: parameters,
+    }
+  );
+  }
+</script>

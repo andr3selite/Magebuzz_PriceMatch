@@ -1,0 +1,320 @@
+.pricematch-popup {
+    float: left;
+    width: 640px;
+}
+
+.pricematch-popup .messages-button {
+    float: left;
+    width: 100%;
+}
+
+.pricematch-popup .messages-button #pricematch-form-message {
+    text-align: left;
+    width: 600px;
+    float: left;
+}
+
+.pricematch-popup .messages-button #pricematch-form-message .messages {
+    float: left;
+    overflow: hidden;
+    text-align: left;
+    width: 600px;
+}
+
+.pricematch-popup .messages-button #pricematch-form-message .messages li {
+    background-color: #FFFFFF;
+    background-position: 10px 2px !important;
+    font-size: 13px;
+    margin: 0 0 10px !important;
+    padding: 0 0 0 30px !important;
+    border: 0 none !important;
+}
+
+.pricematch-popup .messages-button #pricematch-form-message .messages li li {
+    padding: 0 !important;
+}
+
+.pricematch-popup .pricematch-form-before {
+    float: left;
+    width: 100%;
+}
+
+.pricematch-popup .pricematch-form-after {
+    float: left;
+    width: 100%;
+    margin: 15px 0 0;
+}
+
+.pricematch-popup button.btn-close::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+/* FF Fix */
+.pricematch-popup button.btn-close {
+    -webkit-border-fit: lines;
+}
+
+/* Safari & Google Chrome Fix */
+.pricematch-popup button.btn-close {
+    float: right;
+    overflow: visible;
+    margin: 0;
+    width: auto;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    height: 22px !important;
+}
+
+.pricematch-popup button.btn-close span {
+    float: right;
+    width: 22px;
+    height: 22px;
+    text-indent: -999em;
+    border: 0 none;
+}
+
+.pricematch-popup button.btn-close span span {
+    background-position: 100% 0;
+    padding: 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: #d7d7d7;
+}
+
+.pricematch-popup .popup-pricematch-form {
+    float: left;
+    width: 640px;
+}
+
+.pricematch-popup .popup-pricematch-form .fieldset {
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #dddddd;
+    margin: 15px 0;
+    padding: 22px 33px 12px 33px;
+    float: left;
+}
+
+.pricematch-popup .popup-pricematch-form .fieldset .legend-pricematch {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    color: #F18200;
+    float: left;
+    font-size: 13px;
+    margin: -33px 0 0 -20px;
+    padding: 1px 5px;
+    width: auto;
+    font-weight: bold;
+}
+
+.popup-pricematch-form .fieldset .form-list {
+    float: left;
+    width: 100%;
+}
+
+.popup-pricematch-form .fieldset .form-list .fields {
+    float: left;
+    width: 100%;
+}
+
+.popup-pricematch-form .fieldset .form-list .fields .field {
+    float: left;
+    width: 275px;
+    margin: 0 8px;
+}
+
+.popup-pricematch-form .fieldset .form-list .fields .field.first {
+    margin-left: 0 !important;
+}
+
+.popup-pricematch-form .fieldset .form-list .fields .field.last {
+    margin-right: 0 !important;
+}
+
+.popup-pricematch-form .fieldset .form-list .fields .field .input-box {
+    float: left;
+    width: 275px;
+}
+
+.popup-pricematch-form .fieldset .form-list .fields .field .input-box .input-text {
+    float: left;
+    width: 269px;
+}
+
+.popup-pricematch-form .fieldset .form-list .fields .field .input-box textarea {
+    height: 5em;
+}
+
+.popup-pricematch-form .fieldset .form-list .fields .field .label-input {
+    float: left;
+    font-size: 12px;
+    margin: 0 0 2px;
+    width: auto;
+}
+
+.popup-pricematch-form .fieldset .form-list .fields .field .label-input em {
+    color: red;
+    padding: 0 0 0 5px;
+}
+
+.popup-pricematch-form .fieldset .form-list li.wide .input-box {
+    width: 565px !important;
+}
+
+.popup-pricematch-form .fieldset .form-list li.wide textarea {
+    width: 560px !important;
+}
+
+.pricematch-popup .pricematch-captcha {
+    float: left;
+    width: 100%;
+}
+
+.pricematch-popup .pricematch-captcha .input-box {
+    float: left;
+}
+
+.pricematch-popup .pricematch-captcha .input-box #pricematch-captcha {
+    float: left;
+}
+
+.pricematch-popup .pricematch-captcha .input-box .input-text {
+    float: left;
+    font-size: 15px;
+    height: 23px;
+    margin: 0 7px;
+    width: 100px;
+}
+
+.pricematch-popup .pricematch-captcha .input-box .refresh-captcha {
+    float: none;
+    padding: 7px 0 4px;
+    display: inline;
+}
+
+.pricematch-popup .pricematch-captcha .input-box .std {
+    float: left;
+    display: block;
+    clear: both;
+    margin: 3px 0 0;
+}
+
+.pricematch-popup .buttons-set {
+    border: 0 none;
+    clear: both;
+    float: left;
+    margin: 0;
+    padding: 8px 0 0;
+    text-align: right;
+    width: 100%;
+}
+
+.pricematch-popup .buttons-set button.button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+/* FF Fix */
+.pricematch-popup .buttons-set button.button {
+    -webkit-border-fit: lines;
+}
+
+/* Safari & Google Chrome Fix */
+.pricematch-popup .buttons-set button.btn-submit-pricematch {
+    float: right;
+    overflow: visible;
+    width: auto;
+    border: 0;
+    margin: 0 0 0 5px;
+    background: transparent;
+    cursor: pointer;
+    height: 28px !important;
+}
+
+.pricematch-popup .buttons-set button.btn-submit-pricematch span {
+    background: url(../images/bkg_btn-submit.png) no-repeat left top;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    height: 28px;
+    text-transform: capitalize;
+    line-height: 28px;
+    padding: 0 0 0 9px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: visible;
+
+}
+
+.pricematch-popup .buttons-set button.btn-submit-pricematch span span {
+    background-position: 100% 0;
+    padding: 0 9px 0 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: #ffffff;
+}
+
+.pricematch-popup .buttons-set button.btn-reset-pricematch {
+    float: right;
+    overflow: visible;
+    width: auto;
+    border: 0;
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+    height: 28px !important;
+}
+
+.pricematch-popup .buttons-set button.btn-reset-pricematch span {
+    background: url(../images/bkg_btn-submit.png) no-repeat left top;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    height: 28px;
+    text-transform: capitalize;
+    line-height: 28px;
+    padding: 0 0 0 9px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: visible;
+
+}
+
+.pricematch-popup .buttons-set button.btn-reset-pricematch span span {
+    background-position: 100% 0;
+    padding: 0 9px 0 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: #ffffff;
+}
+
+.pricematch-popup .validation-advice {
+    clear: both;
+    color: #EB340A;
+    float: left;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 13px;
+    margin: 4px 0 0;
+    min-height: 13px;
+    padding-left: 17px;
+    text-align: left;
+    width: 100%;
+}
+
+.pricematch-popup .pricematch-captcha .validation-advice {
+    margin: 2px 0 0 105px;
+}
+
+.price-match-message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}

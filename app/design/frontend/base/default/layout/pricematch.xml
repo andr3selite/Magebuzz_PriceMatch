@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <default>
+    <reference name="head">
+      <action method="addCss" ifconfig="pricematch/general/enable_pricematch">
+        <stylesheet>magebuzz/pricematch/fancybox/source/jquery.fancybox.css</stylesheet>
+      </action>
+      <action method="addItem" ifconfig="pricematch/general/enable_pricematch">
+        <type>skin_js</type>
+        <name>magebuzz/pricematch/fancybox/source/jquery.fancybox.js</name>
+      </action>
+    </reference>
+  </default>
+  <catalog_product_view>
+    <reference name="head">
+      <action method="addCss">
+        <stylesheet>magebuzz/pricematch/css/pricematch.css</stylesheet>
+      </action>
+    </reference>    
+    <reference name="product.info.addtocart">
+      <action method="setTemplate" ifconfig="pricematch/general/enable_pricematch">
+        <template>pricematch/button.phtml</template>
+      </action>
+    </reference>
+  </catalog_product_view>
+  <pricematch_index_form>
+    <block type="pricematch/popup" name="root" output="toHtml" template="pricematch/form.phtml">
+      <block type="pricematch/captcha" name="captcha" template="pricematch/captcha.phtml"/>
+    </block>
+  </pricematch_index_form>
+  <!-- price match in my account -->
+  <customer_account>
+    <reference name="customer_account_navigation">
+      <action method="addLink" translate="label" module="pricematch"><name>pricematch</name><path>pricematch/index/accountpricematch/</path><label>My Price Match</label></action>
+    </reference>  
+  </customer_account>
+  <pricematch_index_accountpricematch>
+    <update handle="customer_account"/>
+    <reference name="my.account.wrapper">
+      <block type="pricematch/accountpricematch" name="pricematch.accountpricematch" template="pricematch/accountpricematch.phtml">
+      </block>
+    </reference>
+  </pricematch_index_accountpricematch>
+</layout>

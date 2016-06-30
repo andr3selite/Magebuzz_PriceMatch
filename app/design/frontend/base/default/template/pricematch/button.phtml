@@ -1,0 +1,51 @@
+<?php
+/**
+ * @copyright Copyright (c) 2015 www.magebuzz.com
+ * @var $this Mage_Catalog_Block_Product_View
+ */
+?>
+
+<?php $_product         = $this->getProduct(); ?>
+<?php $buttonTitle      = $this->__('Add to Cart'); ?>
+<?php $formUrl          = Mage::helper('pricematch')->getFormUrl(); ?>
+<?php $pricematchButton = Mage::helper('pricematch')->getPricematchButton(); ?>
+<?php if($_product->isSaleable()): ?>
+  <div class="add-to-cart">
+    <?php if(!$_product->isGrouped()): ?>
+    <label for="qty"><?php echo $this->__('Qty:') ?></label>
+    <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+    <?php endif; ?>
+
+    <?php if (!$_product->isGrouped() && !($_product->getTypeId() == 'bundle')): ?>
+    <div style="float: left;">
+    <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+    <?php echo $this->getChildHtml('', true, true) ?>
+    <br />
+    
+    <!-- Price Match Button -->
+    <button style="margin-top: 2px;" class="button fancybox" type="button" title="<?php echo $this->__('Price Match') ?>" >
+      <span>
+        <span>
+          <?php echo $pricematchButton ?>
+        </span>
+      </span>
+    </button>
+    </div>
+    <!-- end Price Match Button -->
+
+    <?php else: ?>
+    <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+    <?php endif; ?>
+  </div>
+<?php endif; ?>
+
+<script type="text/javascript">
+  jQuery(".fancybox").click(function() {
+    jQuery.fancybox.open([
+      {
+        type: 'ajax',
+        href: '<?php echo $formUrl ?>',
+      }
+    ]);
+  });
+</script>

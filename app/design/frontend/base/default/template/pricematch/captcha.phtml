@@ -1,0 +1,26 @@
+<?php
+/**
+ * @copyright Copyright (c) 2015 www.magebuzz.com
+ * @var $this Magebuzz_Pricematch_Block_Captcha
+ */
+?>
+
+<div class="input-box">
+  <img id="pricematch-captcha" src="<?php echo $this->getUrl('pricematch/index/captcha') ?>" alt="CAPTCHA Image"/>
+  <input type="text" name="captcha_code" size="14" maxlength="6" class="input-text required-entry"/>
+  <a class="refresh-captcha" style="border: none;" href="" title="refresh image"
+     onclick="refresh_image(); return false;"><img id="refresh-captcha"
+      src="<?php echo $this->getSkinUrl('magebuzz/pricematch/css/images/refresh.png') ?>" alt="refresh image" border="0"
+      onclick=""/>
+  </a>
+  <p class="std"><?php echo $this->__('Copy the text in the image above') ?></p>
+</div>
+<script type="text/javascript">
+  jQuery('#fancybox_openform').fancybox({
+    beforeShow: refresh_image(),
+  });
+  function refresh_image() {
+    var new_image = '<?php echo $this->getUrl('pricematch/index/captcha') ?>' + Math.random();
+    $('pricematch-captcha').src = new_image;
+  }
+</script>

@@ -1,0 +1,71 @@
+<?php
+/**
+ * @copyright Copyright (c) 2015 www.magebuzz.com
+ * @var $this Magebuzz_Pricematch_Block_Accountpricematch
+ */
+?>
+
+<?php
+  $symbolCurrency = $this->getCurrentCurrency();
+  $pricematch     = $this->getCollection();
+?>
+<div class="page-title">
+  <h1><?php echo $this->__('Price Match Requests') ?></h1>
+</div>
+<?php echo $this->getPagerHtml(); ?>
+<?php if($pricematch->getSize()): ?>
+  <table class="data-table" id="my-orders-table">
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <thead>
+      <tr>
+        <th><?php echo $this->__('Id') ?></th>
+        <th><?php echo $this->__('Created on') ?></th>
+        <th><?php echo $this->__('Product') ?></th>
+        <th><?php echo $this->__('Product Price') ?></th>
+        <th><?php echo $this->__('Discount') ?></th>
+        <th><?php echo $this->__('Status') ?></th>
+        <th><?php echo $this->__('Coupon code') ?></th>
+      </tr>
+    <thead>
+      <?php
+        foreach($pricematch as $mypricematch){
+          $productId = $mypricematch->getProductId();
+          $productName = $this->getProduct($productId)->getName();
+          $productPrice = $this->getProduct($productId)->getPrice();
+          $productBaseUrl = Mage::getBaseUrl().$this->getProduct($productId)->getUrlPath();
+          ?>
+          <tbody>
+            <tr>
+              <td><?php echo $mypricematch->getPricematchId() ?></td>
+              <td><?php echo $mypricematch->getDate() ?></td>
+              <td><a href="<?php echo $productBaseUrl ?>"><?php echo $productName ?></a></td>
+              <td><?php echo $symbolCurrency.($this->convertPricematch($productPrice)) ?></td>
+              <td><?php echo $symbolCurrency.($this->convertPricematch($mypricematch->getCompetitorPrice())) ?></td>
+              <td><?php if($mypricematch->getStatus()==1){
+                          echo "<i>Approved</i>";
+                        }
+                        elseif($mypricematch->getStatus()==2){
+                          echo "<i>Rejected</i>";
+                        }
+                        else{
+                          echo "<i>Pending</i>";
+                        }
+                  ?>
+              </td>
+              <td><?php echo $mypricematch->getCouponCode() ?></td>
+            </tr>
+          </tbody>
+          <?php
+        }
+      ?>  
+  </table>
+<?php else: ?>
+  <p><?php echo $this->__('You have no items in your price match.'); ?></p>
+<?php endif; ?>
+<?php echo $this->getPagerHtml(); ?>
